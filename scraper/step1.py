@@ -1,13 +1,18 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://www.amazon.in/dp/B0FDL5K6SV?ref_=QAHzEditorial_en_IN_7&pf_rd_r=0J8GWYXYPVFRPE4QFTWG&pf_rd_p=5853ad57-738e-4eb4-b23f-be3464f046a9&pf_rd_m=A1VBAL9TL5WCBF&pf_rd_s=merchandised-search-21&pf_rd_t=&pf_rd_i=1389401031&th=1"
-
+#url = "https://www.amazon.in/boAt-Airdopes-141-Streaming-Bluetooth/dp/B0F8BTY6HT?pf_rd_p=d958016b-0263-452a-a1c3-eb0aa1ee2889&pf_rd_r=VCCTHY4YT39RA3KAS6C3&ref_=Jup-LapsUNrec_B0F8BTY6HT&th=1"
+url=input("Enter Amazon product URL: ")
+url.strip()
 headers = {
-    "User-Agent": "Mozilla/5.0"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/119.0",
+    "Accept-Language": "en-US,en;q=0.9"
 }
 
 response = requests.get(url, headers=headers)
+#print("Status code:", response.status_code)
+#print(response.text[:300])
+
 soup = BeautifulSoup(response.text, "html.parser")
 
 # 1. Product Title
